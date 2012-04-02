@@ -2,21 +2,27 @@
 
 class PhoneBookReport {
 
-   public function getNumberCount($phoneBook) {
-      return count($phoneBook->numbers);
+   private $phoneBook;
+
+   public function __construct($phonebook) {
+      $this->phoneBook = $phonebook;
+   }
+
+   public function getNumberCount() {
+      return count($this->phoneBook->numbers);
    }
    
-   public function getNumbersSeperatedByCommas($phoneBook) {
+   public function getNumbersSeperatedByComma() {
       $output = '';
-      foreach($phoneBook->numbers as $number) {
+      foreach($this->phoneBook->numbers as $number) {
 	 $output .= $number . ',';
       }
       return $output;
    }
    
-   public function getNumbersSeperatedByNewlines($phoneBook) {
+   public function getNumbersSeperatedByNewline() {
       $output = '';
-      foreach($phoneBook->numbers as $number) {
+      foreach($this->phoneBook->numbers as $number) {
 	 $output .= $number . PHP_EOL;
       }
       return $output;
